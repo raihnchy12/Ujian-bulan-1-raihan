@@ -1,0 +1,480 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1-6
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Menerapkan pada Heading */
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Menerapkan pada Body & Navigasi */
+body, button {
+    font-family: 'Poppins', sans-serif;
+    background: #FFFFFF;
+    color:#2B2B2B ;
+}
+
+header {
+    width: 100%;
+    padding: 25px 80px;
+    background: linear-gradient(180deg, rgba(200, 162, 93, 0.95) 80%, #FFFFFF 100%);
+    display: flex;
+    flex-direction:  row;
+    justify-content:  space-between;
+    align-items: center ;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8F4EC 100%);
+    border-bottom: 1px solid #E5D5B5; 
+    z-index: 1000;
+    display: flex;                   /* Membuat isi nav rata secara horizontal */
+    justify-content: space-between;  /* Menu di kiri, search box di kanan */
+    align-items: center;            /* Menyejajarkan posisi tengah secara vertikal */
+    padding: 12px 25px
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 50px; /
+}
+
+nav a {
+    text-decoration: none;
+    color: #C59B27;
+    font-weight: 500;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    width: 400px;
+}
+
+.search-box input:focus {
+    border-color: #b8860b;
+}
+
+.search-box button {
+    padding: 8px 15px;
+    background-color: #b8860b;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #8b6508;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px; /* Jarak atas-bawah & kiri-kanan */
+    gap: 40px;
+    background-color: #FFFFFF;
+}
+
+.hero-text {
+    flex: 1; /* Mengambil setengah lebar layar */
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: #C8A25D;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.hero-text p {
+    font-size: 1.17rem;
+    color: #2B2B2B;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-card {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    width: 45%;
+    height: 100%;
+    background-color: #C8A25D;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.hero-img {
+    position: relative;
+    left: 130px;
+    z-index: 2;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+.tombol-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 30px;
+    background: #9ec715;
+    color: rgb(255, 255, 255);
+    font-size: 1.06rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+/* Container Utama Katalog */
+.katalog-section {
+    padding: 60px 80px;
+    background-color: #FFFFFF;
+}
+
+.katalog-section h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #C8A25D;
+    margin-bottom: 40px;
+}
+
+/* GRID OTOMATIS (auto-fit & minmax) */
+.katalog-grid {
+    display: grid;
+    /* Membuat kolom otomatis dengan ukuran minimal 280px dan maksimal 1fr (sama besar) */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Jarak antar kotak */
+}
+
+/* Styling Tiap Kartu / Kotak */
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #E5D5B5;
+    border-radius: 12px;
+    overflow: hidden; /* Mencegah gambar keluar dari sudut border-radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek Hover (Saat Kursor Diarahkan ke Kartu) */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(200, 162, 93, 0.2);
+}
+
+/* Pembungkus Foto */
+.card-img {
+    width: 100%;
+    height: 250px; /* Tinggi foto dibuat seragam */
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar foto terpotong rapi tanpa gepeng */
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.05); /* Efek zoom foto saat di-hover */
+}
+
+/* Informasi Produk (Judul & Harga) */
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-body h3 {
+    font-size: 1.2rem;
+    color: #2B2B2B;
+    margin-bottom: 8px;
+}
+
+.card-body .harga {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #C59B27; /* Warna harga menyesuaikan tema emas kamu */
+}
+
+/* --- SECTION LOKASI / ALAMAT --- */
+.lokasi-section {
+    padding: 60px 80px;
+    background-color: #F8F4EC; /* Background krem lembut agar kontras halus dengan footer */
+    border-top: 1px solid #E5D5B5;
+}
+
+.lokasi-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap; /* Menjaga tampilan tetap rapi jika diakses dari layar kecil */
+}
+
+/* Kolom Teks Informasi */
+.lokasi-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.lokasi-info h2 {
+    font-size: 2.2rem;
+    color: #C8A25D;
+    margin-bottom: 10px;
+}
+
+.lokasi-info .sub-title {
+    color: #666666;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-item h4 {
+    font-size: 1.1rem;
+    color: #2B2B2B;
+    margin-bottom: 4px;
+}
+
+.info-item p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* Kolom Google Maps */
+.lokasi-map {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid #FFFFFF;
+}
+
+.lokasi-map iframe {
+    display: block;
+}
+
+/* --- FOOTER SECTION --- */
+.site-footer {
+    background-color: #1A1A1A; /* Warna hitam elegan agar footer terlihat kokoh dan kontras */
+    color: #F8F4EC;            /* Warna teks krem lembut */
+    padding: 50px 80px 20px;
+    margin-top: 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+    margin-bottom: 40px;
+}
+
+/* Kelompok Brand (Kiri) */
+.footer-brand {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+
+.footer-brand .brand-logo {
+    font-size: 1.8rem;
+    color: #C8A25D; /* Warna emas identitas toko */
+    margin-bottom: 12px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    color: #CCCCCC;
+    line-height: 1.6;
+}
+
+/* Kelompok Kontak (Kanan) */
+.footer-contact {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+}
+
+.footer-contact h4 {
+    font-size: 1.2rem;
+    color: #C8A25D;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.footer-contact a {
+    color: #E5D5B5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #FFFFFF; /* Efek menyala saat di-hover */
+}
+
+/* Garis Pemisah & Copyright */
+.footer-bottom {
+    border-top: 1px solid #333333;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888888;
+}
+
+/* ==========================================
+   FIX HP: SEARCH BOX FLEXIBEL & GAMBAR HERON
+   ========================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* --- 1. MERAPIKAN NAV & SEARCH BOX --- */
+    nav {
+        flex-direction: column; /* Mengatur Menu & Search menjadi 2 baris agar longgar */
+        gap: 12px;
+        padding: 12px 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .search-box {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-box input {
+        width: 100% !important; /* Membuat input search fleksibel menyesuaikan sisa layar */
+        max-width: 280px;      /* Batas maksimal agar tidak terlalu panjang */
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .search-box button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+
+    /* --- 2. MERAPIKAN HERO SECTION & GAMBAR BUKET --- */
+    .hero {
+        flex-direction: column; /* Menyusun teks di atas, gambar di bawah */
+        padding: 30px 20px;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+    }
+
+    /* MENGEMBALIKAN GAMBAR BUKET KE TENGAH */
+    .hero-image-wrapper {
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .bg-card {
+        position: absolute;
+        right: 10%; /* Posisi kotak emas disesuaikan di layar HP */
+        top: 0;
+        width: 60%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-img {
+        position: relative;
+        left: 0 !important; /* NETRALKAN POSISI left: 130px AGAR GAMBAR TIDAK KELUAR LAYAR */
+        z-index: 2;
+        width: 80%;
+        max-width: 220px;   /* Ukuran gambar buket di HP */
+        height: auto;
+    }
+}
